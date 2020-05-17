@@ -7,6 +7,8 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    if len(input_list)==0:
+        return -1
     return search(input_list,number,0,len(input_list)-1)
 
 def search(input_list,number,start,end):
@@ -58,3 +60,5 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+test_function([[], 3])

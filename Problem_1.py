@@ -7,6 +7,9 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
+    if number<0:
+        return None
+
     return find_sqrt(0,number,number)
 
 def find_sqrt(start,end,target):
@@ -35,3 +38,6 @@ print ("Pass" if  (0 == sqrt(0)) else "Fail")
 print ("Pass" if  (4 == sqrt(16)) else "Fail")
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
 print ("Pass" if  (5 == sqrt(27)) else "Fail")
+
+print ("Pass" if  (None == sqrt(-10)) else "Fail")
+print ("Pass" if  (28097 == sqrt(789456123)) else "Fail")

@@ -74,3 +74,5 @@ for word in wordList:
     MyTrie.insert(word)
 
 print(MyTrie.suffixes('an'))
+
+print(MyTrie.suffixes(''))

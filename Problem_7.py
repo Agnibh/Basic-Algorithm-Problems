@@ -42,6 +42,8 @@ class RouteTrie:
 class Router:
     def __init__(self, rootHandler, notFoundHandler):
         self.trie=RouteTrie(rootHandler,notFoundHandler)
+        self.handler=rootHandler
+        self.notFoundHandler=notFoundHandler
 
     def add_handler(self, path, handler):
         path_list=self.split_path(path)
@@ -49,6 +51,8 @@ class Router:
 
     def lookup(self, path):
         path_list=self.split_path(path)
+        if len(path)==0:
+            return self.notFoundHandler
         return self.trie.find(path_list)
 
     def split_path(self, path):
@@ -62,8 +66,11 @@ router = Router("root handler", "not found handler") # remove the 'not found han
 router.add_handler("/home/about", "about handler")  # add a route
 
 # some lookups with the expected output
+
 print(router.lookup("/")) # should print 'root handler'
 print(router.lookup("/home")) # should print 'not found handler' or None if you did not implement one
 print(router.lookup("/home/about")) # should print 'about handler'
 print(router.lookup("/home/about/")) # should print 'about handler' or None if you did not handle trailing slashes
 print(router.lookup("/home/about/me")) # should print 'not found handler' or None if you did not implement one
+
+print(router.lookup(""))

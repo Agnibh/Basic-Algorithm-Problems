@@ -5,13 +5,16 @@ def get_min_max(ints):
     Args:
        ints(list): list of integers containing one or more integers
     """
+    if len(ints)==0:
+        return None
+
     if len(ints)==1:                        # base case when there is only a single element in the interval
         if ints[0]>0:
-            return 2147483647,ints[0]       # if the element is greater than 0, then send min value as the highest integer value in python as all other values will be less than this
-        return ints[0],-2147483648          # if the element is less than 0, then send max value as the lowest integer value in python
+            return ints[0],ints[0]       # if the element is greater than 0, then send min value as the highest integer value in python as all other values will be less than this
+        return ints[0],ints[0]         # if the element is less than 0, then send max value as the lowest integer value in python
 
-    max=0
-    min=0
+    fin_max=0
+    fin_min=0
 
     mid=len(ints)//2
 
@@ -19,16 +22,16 @@ def get_min_max(ints):
     right_min,right_max=get_min_max(ints[mid:])
 
     if left_max>right_max:                          # Compare the max-min values from the two halves
-        max=left_max
+        fin_max=left_max
     else:
-        max=right_max
+        fin_max=right_max
 
     if left_min<right_min:
-        min=left_min
+        fin_min=left_min
     else:
-        min=right_min
+        fin_min=right_min
 
-    return min,max
+    return fin_min,fin_max
 
 ## Example Test Case of Ten Integers
 import random
@@ -37,3 +40,7 @@ l = [i for i in range(0, 10)]  # a list containing 0 - 9
 random.shuffle(l)
 print(get_min_max(l))
 print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+
+print(get_min_max([0]))
+print(get_min_max([-783,89823,84262837,-2398432984,2736218,28137,5987,-203984]))
+print(get_min_max([]))

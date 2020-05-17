@@ -1,0 +1,62 @@
+Problem-1:
+
+Initially we consider the interval in which the square root lies to be starting from 0 to the number itself.
+I find the mid element of the interval. If the square of the mid element is greater than the target number, 
+then I shrink the interval from start to mid, otherwise from mid to end. I recursively call the function until there is only 2 elements left.
+When that is the case,return the start of the interval as the square of the end will always be greater than the target. 
+
+Time Complexity- Since we are doing binary search and ignoring one half of the interval everytime, so,
+T(n) = T(n/2)+O(1), hence T(n) = log(n)
+
+Problem-2:
+
+Initially we consider the interval in which the target lies to be starting from index 0 to the end of the array.
+I find the element at the middle of the array. if the mid element equals the target, then return the mid element. Otherwise there are 4 cases-
+-if the number lies in the sorted list from start element to mid element, then recursivey call the function by changing the end index to mid index.
+-if the number lies in the sorted list from mid element to end element, then recursivey call the function by changing the start index to mid index.
+-if the number lies in the unsorted list from start element to mid element, then recursivey call the function by changing the end index to mid index.
+-if the number lies in the unsorted list from mid element to end element, then recursivey call the function by changing the start index to mid index.
+
+Time Complexity- Since we are dividing the entire intervalin 4 sets and ignoring 3 of the interval everytime, so,
+T(n)=T(n/4)+O(1), hence T(n) = log(n)
+
+Problem-3:
+
+I merge sorted the array first. If the number of elements in the array is even, then I form the smaller of the two numbers by 
+putting the even indexed element in increasing units position and larger of the two numbers by putting the odd indexed element 
+in increading units position. If the number of elements in the array is odd,then I repeat the same except for the last element in the array.
+I put the last element at the highest unit of larger number.
+
+Time Complexity- Time for merge sort + Time to form the numbers = O(nlogn) + O(n) = O(nlogn)
+
+Problem-4:
+
+Count the number of 0's, 1's and 2's. Form an array based on the count.
+Time Complexity- Time to count 0's,1's and 2's + Time to form an array = O(n) + O(n) = O(n)
+
+Problem-5:
+
+Created a TrieNode having data members as char(to represent the character it holds), is_word(if the node is end to a word) and child(dictionary
+to hold added characters). Created a class Trie from the trie nodes which adds the nodes as the word is traversed.
+
+Time complexity- To insert a word: O(n) where n is the length of the word as we have to traverse from the root node to end.
+				 To find a word: O(n) where n is the length of the word as we have to traverse from the root node to end.
+
+
+Problem-6:
+
+We divide the whole interval in two halves and find the maximum and minimum values in either of the two halves. Then we consider the max value from
+the two halves and assign the greater as the final maximum value. Similarly we compare the minimum value from the two halves and assign 
+the minimum as the final mimimum value. By calling this function recursively, we build up from the base case which consts of  single element.
+
+Time Complexity- Since we are doing binary divide and comparing max-min value in O(1) times-
+T(n) = 2*T(n/2)+O(1), hence T(n) = O(n)
+
+Problem-7:
+
+Created a RouteTrieNode having data members as handler(to represent the handler to this path), word(to represent the subpath) and children(dictionary
+to hold added subpaths). Created a class RouteTrie from the RouteTrieNodes which adds the nodes as the path is traversed. The final router class 
+creates the RouteTrie instance and adds handler to each path.
+
+Time complexity- To add a handler: O(n) where n is the length of the path as we have to traverse from the root node to end.
+				 To look for a handler: O(n) where n is the length of the path as we have to traverse from the root node to end.

@@ -62,3 +62,4 @@ test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
 
 test_function([[], 3])
+test_function([[0], 0])

@@ -8,6 +8,8 @@ When that is the case,return the start of the interval as the square of the end 
 Time Complexity- Since we are doing binary search and ignoring one half of the interval everytime, so,
 T(n) = T(n/2)+O(1), hence T(n) = log(n)
 
+Space complexity- O(1) as all data types get garbage collected after each recursive step
+
 Problem-2:
 
 Initially we consider the interval in which the target lies to be starting from index 0 to the end of the array.
@@ -20,6 +22,8 @@ I find the element at the middle of the array. if the mid element equals the tar
 Time Complexity- Since we are dividing the entire intervalin 4 sets and ignoring 3 of the interval everytime, so,
 T(n)=T(n/4)+O(1), hence T(n) = log(n)
 
+Space complexity- O(1) as all data types get garbage collected after each recursive step
+
 Problem-3:
 
 I merge sorted the array first. If the number of elements in the array is even, then I form the smaller of the two numbers by 
@@ -29,10 +33,15 @@ I put the last element at the highest unit of larger number.
 
 Time Complexity- Time for merge sort + Time to form the numbers = O(nlogn) + O(n) = O(nlogn)
 
+Space complexity- O(n) which is the space complexity of merge sort
+
 Problem-4:
 
 Count the number of 0's, 1's and 2's. Form an array based on the count.
+
 Time Complexity- Time to count 0's,1's and 2's + Time to form an array = O(n) + O(n) = O(n)
+
+Space complexity- O(n) as an array of n elements get created
 
 Problem-5:
 
@@ -41,6 +50,8 @@ to hold added characters). Created a class Trie from the trie nodes which adds t
 
 Time complexity- To insert a word: O(n) where n is the length of the word as we have to traverse from the root node to end.
 				 To find a word: O(n) where n is the length of the word as we have to traverse from the root node to end.
+				 
+Space complexity- O(n) where n is the number of subpaths in the path as a dictionary gets created of this hieght
 
 
 Problem-6:
@@ -52,6 +63,8 @@ the minimum as the final mimimum value. By calling this function recursively, we
 Time Complexity- Since we are doing binary divide and comparing max-min value in O(1) times-
 T(n) = 2*T(n/2)+O(1), hence T(n) = O(n)
 
+Space complexity- O(1) as all data types get garbage collected after each recursive step
+
 Problem-7:
 
 Created a RouteTrieNode having data members as handler(to represent the handler to this path), word(to represent the subpath) and children(dictionary
@@ -60,3 +73,5 @@ creates the RouteTrie instance and adds handler to each path.
 
 Time complexity- To add a handler: O(n) where n is the length of the path as we have to traverse from the root node to end.
 				 To look for a handler: O(n) where n is the length of the path as we have to traverse from the root node to end.
+				 
+Space complexity- O(n) where n is the number of subpaths in the path as a dictionary gets created of this hieght
